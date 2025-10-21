@@ -5,6 +5,18 @@ This version focuses on the **Support Vector Machine (SVM)** model — exploring
 
 ---
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Objetives](#objetives)
+3. [Dataset](#dataset)
+4. [Methodology](#methodology)
+5. [Results Summary](#results-summary) 
+6. [Tech Stack](#tech-stack)
+7. [Author](#author)
+8. [Poster](#poster)
+
+---
+
 ## Overview
 
 This project demonstrates a **complete ML workflow**:
@@ -103,6 +115,8 @@ The **goal** is to predict whether a patient shows signs of diabetes (binary cla
 
 **Mauro Junior**, **Julio Franz**, **Pablo Souza**, **Victor Teixeira**, **Matheus Herique**, **Fabiano Menegidio**  
 🔗 [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7379939858934476800/) 
+
+## Poster 
 
 <img width="757" height="932" alt="poster" src="https://github.com/user-attachments/assets/fbf4fb6f-0b20-4c5d-a7d3-1f5cd8b62220" />
 
