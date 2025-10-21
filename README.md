@@ -7,7 +7,7 @@ This version focuses on the **Support Vector Machine (SVM)** model — exploring
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Objetives](#objetives)
+2. [Objectives](#obcjetives)
 3. [Dataset](#dataset)
 4. [Methodology](#methodology)
 5. [Results Summary](#results-summary) 
