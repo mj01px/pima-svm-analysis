@@ -1,87 +1,81 @@
 # Pima Indians Diabetes Prediction — SVM Classifier
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)
+
 A machine learning notebook developed to **analyze and predict diabetes** among Pima Indian women using clinical and biometric data.  
 This version focuses on the **Support Vector Machine (SVM)** model — exploring how kernel choice, regularization, and validation strategy affect performance.
 
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Objectives](#objectives)
-3. [Dataset](#dataset)
-4. [Methodology](#methodology)
-5. [Results Summary](#results-summary) 
-6. [Tech Stack](#tech-stack)
-7. [Author](#author)
-8. [Poster](#poster)
-
----
-
-## Overview
+## 📜 Overview
 
 This project demonstrates a **complete ML workflow**:
-- Data preprocessing with **imputation** and **scaling**
-- Hyperparameter tuning using **GridSearchCV**
-- Model evaluation using multiple **cross-validation strategies**
-- Visualization and performance reporting for reproducibility
+- Data preprocessing (imputation + scaling)
+- Hyperparameter tuning with **GridSearchCV**
+- Multiple **cross-validation** strategies
+- Confusion matrix + classification report visualization
 
-The notebook is fully compatible with **Google Colab** and designed to be **modular, readable, and extendable** for future experiments (e.g. Random Forest, Logistic Regression, or Neural Networks).
+Fully compatible with **Google Colab**, and designed to be modular, readable, and extendable.
 
 ---
 
 ## Objectives
 
-- Compare **KFold** vs **StratifiedKFold** cross-validation on SVM models  
-- Evaluate kernel effects: `linear`, `rbf`, `poly`, and `sigmoid`  
-- Optimize hyperparameters **C** and **gamma** via grid search  
-- Measure generalization through **F1**, **Recall**, and **Precision**  
-- Build a **reproducible and exportable pipeline**  
+- Compare **KFold** vs **StratifiedKFold**  
+- Test kernels: `linear`, `rbf`, `poly`, `sigmoid`  
+- Optimize **C** and **gamma**  
+- Evaluate **precision**, **recall**, **F1-score**  
+- Build a reproducible ML pipeline  
 
 ---
 
-## Dataset
+## 📊 Dataset
 
-**Source:** [Pima Indians Diabetes Database (Kaggle)](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+**Source:**  
+[Pima Indians Diabetes Database (Kaggle)](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
 
 **Description:**  
-The dataset contains diagnostic measurements from 768 female patients of Pima Indian heritage — all aged 21 or older.  
-The **goal** is to predict whether a patient shows signs of diabetes (binary classification).
+768 female patients (21+ years old) with diagnostic measurements.  
+Goal: **Predict diabetes (0/1)**.
 
 ---
 
 ## Methodology
 
-### 1. Data Preprocessing
-- **Imputation:** Missing or zero values replaced using the *median*.
-- **Standardization:** `StandardScaler()` applied to normalize feature ranges.
-- **Balanced weighting:** `class_weight="balanced"` used to handle class imbalance.
+### 1. Preprocessing
+- Replace missing/zero values via **median imputation**
+- Apply `StandardScaler()`  
+- Use `class_weight="balanced"` for fairness  
 
-### 2. Modeling
-- Core model: **`sklearn.svm.SVC()`**
-- Hyperparameter tuning:
-  - `C`: regularization strength
-  - `gamma`: kernel coefficient (for RBF)
-  - `kernel`: `linear`, `rbf`, `poly`, `sigmoid`
+### 2. Modeling (SVM)
+- `SVC()`  
+- Tuned parameters:  
+  - **C** (regularization)  
+  - **gamma** (kernel coefficient)  
+  - **kernel** type  
 
 ### 3. Cross-Validation
-- `KFold(n_splits=10)` — general performance
-- `StratifiedKFold(n_splits=3)` — preserves label ratio for medical fairness
+- `KFold(10)` — general estimation  
+- `StratifiedKFold(3)` — maintains label proportion  
 
 ### 4. Metrics
-- **Accuracy**
-- **Precision**
-- **Recall**
-- **F1-score**
-- **Confusion Matrix**
-- Optional: **ROC-AUC** and **Precision-Recall Curves**
+- Accuracy  
+- Precision  
+- Recall  
+- F1-score  
+- Confusion Matrix  
 
-### 5. Reporting
-- Automatic creation of a **DataFrame** from the classification report for cleaner visualization.
-- Artifacts (`.joblib`) saved for model reuse or deployment.
+### 5. Reporting & Export
+- Classification report → DataFrame  
+- `.joblib` model export  
 
 ---
 
-##  Results Summary
+## 📈 Results Summary
 
 | Model / CV | Kernel | Accuracy | F1 | Recall | CV Type |
 |-------------|---------|-----------|------|----------|----------|
@@ -89,34 +83,41 @@ The **goal** is to predict whether a patient shows signs of diabetes (binary cla
 | SVM | RBF | ≈ 72.0% | 0.71 | 0.68 | StratifiedKFold(3) |
 | Fixed RBF (C=10, γ=0.01) | RBF | ≈ 76.4% | 0.75 | 0.73 | Hold-out |
 
-**Top Predictive Features:**  
-`Glucose`, `BMI`, and `Age` consistently contribute most to correct predictions.
+**Top Features:**  
+- Glucose  
+- BMI  
+- Age  
 
 ---
 
-##  Insights
+## Insights
 
-- **Cross-validation choice matters:** Stratified folds are crucial in unbalanced medical data.  
-- **Kernel selection:** RBF outperformed others, balancing bias and variance effectively.  
-- **Model interpretability:** Although SVMs aren’t inherently explainable, scaling and feature analysis still reveal strong medical correlations.  
-- **Clinical relevance:** In healthcare, **Recall > Accuracy** — missing diabetic cases (false negatives) is more harmful than false positives.
+- Stratified CV is essential for medical data  
+- RBF kernel provides best bias–variance balance  
+- Recall is more critical than accuracy in healthcare  
+- Feature scaling strongly improves SVM performance  
 
 ---
 
 ## Tech Stack
 
-- **Language:** Python 3.10+  
-- **Libraries:** `scikit-learn`, `pandas`, `numpy`, `matplotlib`, `joblib`, `seaborn`  
-- **Environment:** Google Colab / Jupyter Notebook  
+- Python 3.10+  
+- scikit-learn  
+- pandas  
+- numpy  
+- seaborn  
+- matplotlib  
+- joblib  
 
 ---
 
-## Author
+## 👤 Authors
 
 **Mauro Junior**, **Julio Franz**, **Pablo Souza**, **Victor Teixeira**, **Matheus Herique**, **Fabiano Menegidio**  
-🔗 [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7379939858934476800/) 
+🔗 LinkedIn: https://www.linkedin.com/feed/update/urn:li:activity:7379939858934476800/
 
-## Poster 
+---
+
+## Poster
 
 <img width="757" height="932" alt="poster" src="https://github.com/user-attachments/assets/fbf4fb6f-0b20-4c5d-a7d3-1f5cd8b62220" />
-
